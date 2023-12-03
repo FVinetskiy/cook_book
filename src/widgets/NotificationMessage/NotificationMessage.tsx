@@ -1,10 +1,8 @@
 import { SnackBar } from "@consta/uikit/SnackBar";
 import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  notificationsSelectors,
-  remove,
-} from "../app/redux/slices/notificationsSlice";
+import { notificationsSelectors, remove } from "../../app/redux/slices/notificationsSlice";
+import "./SnackBar.scss";
 
 const NotificationMessage: FC = () => {
   const dispatch = useDispatch();
@@ -29,6 +27,7 @@ const NotificationMessage: FC = () => {
 
   return (
     <SnackBar
+      className="SnackBar"
       items={items}
       onItemClose={handleItemOnClose}
       onItemAutoClose={handleItemOnClose}

@@ -1,6 +1,6 @@
-import DetailPage from "../../pages/DetailPage";
 import Login from "../../pages/Login";
 import MainPage from "../../pages/MainPage";
+import NotFound from "../../pages/NotFound";
 import Profile from "../../pages/Profile";
 
 type PropsRoute = {
@@ -10,26 +10,22 @@ type PropsRoute = {
 
 export enum AppRoutes {
   MAIN = "main",
-  DETAILS = "details",
   LOGIN = "login",
   PROFILE = "profile",
+  NOTFOUND = "notfound",
 }
 
 export const RouterPath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: "/",
-  [AppRoutes.DETAILS]: "/details",
   [AppRoutes.LOGIN]: "/login",
   [AppRoutes.PROFILE]: "/profile",
+  [AppRoutes.NOTFOUND]: "*",
 };
 
 export const routerConfig: Record<AppRoutes, PropsRoute> = {
   [AppRoutes.MAIN]: {
     path: RouterPath.main,
     element: <MainPage />,
-  },
-  [AppRoutes.DETAILS]: {
-    path: RouterPath.details,
-    element: <DetailPage />,
   },
   [AppRoutes.LOGIN]: {
     path: RouterPath.login,
@@ -38,5 +34,9 @@ export const routerConfig: Record<AppRoutes, PropsRoute> = {
   [AppRoutes.PROFILE]: {
     path: RouterPath.profile,
     element: <Profile />,
+  },
+  [AppRoutes.NOTFOUND]: {
+    path: RouterPath.notfound,
+    element: <NotFound />,
   },
 };

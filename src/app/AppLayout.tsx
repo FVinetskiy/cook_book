@@ -1,5 +1,5 @@
 import { FC, Suspense } from "react";
-import NotificationMessage from "../widgets/NotificationMessage";
+import NotificationMessage from "../widgets/NotificationMessage/NotificationMessage";
 import { Loader } from "@consta/uikit/Loader";
 import LayoutHeader from "../widgets/LayoutHeader/LayoutHeader";
 import { Route, Routes } from "react-router-dom";

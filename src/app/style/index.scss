@@ -1,7 +1,7 @@
 @import "./fonts";
 
 body {
-  min-width: 320px;
+  min-width: 996px;
   min-height: 100vh;
   margin: 0;
   font-family: "Sofia Sans Condensed", sans-serif;
@@ -36,9 +36,44 @@ a {
   text-decoration: none;
 }
 
+ul {
+  padding: 0;
+  list-style: none;
+}
+
 .container {
   width: 100%;
   max-width: 1024px;
   margin: 0 auto;
   padding: 14px;
+}
+
+.wrap-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 24px 0;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 600px;
+}
+
+.modal-content button {
+  align-self: flex-end;
+}
+
+.aga--AgGridAdapter .ag-cell-focus::after {
+  display: none;
+}
+
+span[role="presentation"] {
+  overflow: auto !important;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  white-space: normal !important;
 }

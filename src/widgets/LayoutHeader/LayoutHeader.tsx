@@ -2,12 +2,7 @@ import { FC, useEffect } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { Button } from "@consta/uikit/Button";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  geIsAuth,
-  getCurrentUser,
-  isAuthState,
-  userState,
-} from "../../app/redux/slices/authSlice";
+import { geIsAuth, getCurrentUser, isAuthState, userState } from "../../app/redux/slices/authSlice";
 import { NavLink } from "react-router-dom";
 import { Badge } from "@consta/uikit/Badge";
 import "./LayoutHeader.scss";
@@ -35,19 +30,19 @@ const LayoutHeader: FC = () => {
     <>
       <header className="header">
         <div className="header__wrap-logo">
-          <h2>Logo🤘</h2>
+          <h2 style={{ marginRight: "10px" }}>Логотип</h2>
           <NavLink to="/">
-            <Badge status="normal" label="main" />
+            <Badge status="normal" label="главная" />
           </NavLink>
           {!isAuth ? (
             <>
               <NavLink to="/login">
-                <Badge status="normal" label="login" />
+                <Badge status="normal" label="логин" />
               </NavLink>
             </>
           ) : (
             <NavLink to="/profile">
-              <Badge status="normal" label="profile" />
+              <Badge status="normal" label="личный профиль" />
             </NavLink>
           )}
         </div>
@@ -57,12 +52,7 @@ const LayoutHeader: FC = () => {
           ) : (
             <span style={{ marginRight: "10px" }}>вы не авторизованы</span>
           )}
-          <Button
-            disabled={!isAuth}
-            size="xs"
-            onClick={() => signOut(auth)}
-            label="Logout"
-          />
+          <Button disabled={!isAuth} size="xs" onClick={() => signOut(auth)} label="Выйти" />
         </div>
       </header>
     </>

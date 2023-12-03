@@ -16,18 +16,15 @@ export const notificationsSlice = createSlice({
   name: "notifications",
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<notification>) => {
+    addNotification: (state, action: PayloadAction<notification>) => {
       state.items.unshift(action.payload);
     },
     remove: (state, action) => {
-      state.items = state.items.filter(
-        (item: any) => item.key !== action.payload
-      );
+      state.items = state.items.filter((item: any) => item.key !== action.payload);
     },
   },
 });
 
-export const notificationsSelectors = (state: RootState) =>
-  state.notificationsSlice.items;
-export const { add, remove } = notificationsSlice.actions;
+export const notificationsSelectors = (state: RootState) => state.notificationsSlice.items;
+export const { addNotification, remove } = notificationsSlice.actions;
 export default notificationsSlice.reducer;

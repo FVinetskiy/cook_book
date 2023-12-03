@@ -1,15 +1,11 @@
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { FC, useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Button } from "@consta/uikit/Button";
 import { Layout } from "@consta/uikit/Layout";
-import ControlledTextField from "../widgets/ControlledTextField";
+import ControlledTextField from "../widgets/ControlledTextField/ControlledTextField";
 import { useDispatch, useSelector } from "react-redux";
-import { add } from "../app/redux/slices/notificationsSlice";
+import { addNotification } from "../app/redux/slices/notificationsSlice";
 import { userState } from "../app/redux/slices/authSlice";
 import { useNavigate } from "react-router-dom";
 
@@ -32,27 +28,27 @@ const RegOrAuthorization: FC = () => {
     formState: { isDirty, isValid },
   } = useForm<Inputs>({ mode: "onChange" });
 
-  const onSubmitRegistration: SubmitHandler<Inputs> = async (data) => {
+  const onSubmitRegistration: SubmitHandler<Inputs> = async data => {
     if (isRegForm) {
       try {
         await createUserWithEmailAndPassword(auth, data.mail, data.password);
         dispatch(
-          add({
+          addNotification({
             key: "1",
             message: "Вы успешно зарегистрировались",
             status: "normal",
             autoClose: 4,
-          })
+          }),
         );
       } catch (error: unknown) {
         if (error instanceof Error) {
           dispatch(
-            add({
+            addNotification({
               key: "1",
               message: `${error?.message}`,
               status: "alert",
               autoClose: 4,
-            })
+            }),
           );
         }
       }
@@ -60,22 +56,22 @@ const RegOrAuthorization: FC = () => {
       try {
         await signInWithEmailAndPassword(auth, data.mail, data.password);
         dispatch(
-          add({
+          addNotification({
             key: "1",
             message: "Вы успешно авторизовались",
             status: "normal",
             autoClose: 4,
-          })
+          }),
         );
       } catch (error: unknown) {
         if (error instanceof Error) {
           dispatch(
-            add({
+            addNotification({
               key: "1",
               message: `${error?.message}`,
               status: "alert",
               autoClose: 4,
-            })
+            }),
           );
         }
       }

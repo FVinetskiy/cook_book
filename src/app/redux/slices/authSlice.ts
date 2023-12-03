@@ -4,6 +4,9 @@ import { RootState } from "../store";
 type TState = {
   user: {
     email?: string;
+    phoneNumber?: string;
+    displayName?: string;
+    emailVerified?: boolean;
   };
   isAuth: boolean;
 };

@@ -1,12 +1,7 @@
 import { TextField } from "@consta/uikit/TextField";
 import { useId } from "react";
-import { Control, useController } from "react-hook-form";
+import { useController } from "react-hook-form";
 import { Text } from "@consta/uikit/Text";
-
-type Inputs = {
-  mail: string;
-  password: string;
-};
 
 type Rules = {
   required?: string;
@@ -19,14 +14,15 @@ type Rules = {
 
 type ControlTextFieldProps = {
   placeholder: string;
-  control?: Control<Inputs, any>;
-  name: "mail" | "password";
+  control?: any;
+  name: string;
   rules?: Rules;
   type: string;
+  rows?: any;
 };
 
 const ControlledTextField = (props: ControlTextFieldProps) => {
-  const { placeholder, control, name, rules, type } = props;
+  const { placeholder, control, name, rules, type, rows } = props;
   const id = useId();
 
   const { field, fieldState } = useController({
@@ -49,10 +45,9 @@ const ControlledTextField = (props: ControlTextFieldProps) => {
         width="full"
         placeholder={placeholder}
         type={type}
+        rows={rows}
       />
-      {fieldState.invalid && fieldState.error?.message && (
-        <Text view="alert">{fieldState.error?.message}</Text>
-      )}
+      {fieldState.invalid && fieldState.error?.message && <Text view="alert">{fieldState.error?.message}</Text>}
     </div>
   );
 };
